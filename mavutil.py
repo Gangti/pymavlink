@@ -250,17 +250,23 @@ class mavfile(object):
             magic = ord(buf[0])
         except:
             magic = buf[0]
-        if not magic in [ 85, 254, 253 ]:
+        # FIXED BY GANGTI/20190110/MAVLINK CUSTOMIZATION
+        if not magic in [ 85, 239, 223 ]:
+        # CLOSE BY GANGTI/20190110/MAVLINK CUSTOMIZATION
             return
         self.first_byte = False
-        if self.WIRE_PROTOCOL_VERSION == "0.9" and magic == 254:
+        # FIXED BY GANGTI/20190110/MAVLINK CUSTOMIZATION
+        if self.WIRE_PROTOCOL_VERSION == "0.9" and magic == 239:
+        # CLOSE BY GANGTI/20190110/MAVLINK CUSTOMIZATION
             self.WIRE_PROTOCOL_VERSION = "1.0"
             set_dialect(current_dialect)
         elif self.WIRE_PROTOCOL_VERSION == "1.0" and magic == 85:
             self.WIRE_PROTOCOL_VERSION = "0.9"
             os.environ['MAVLINK09'] = '1'
             set_dialect(current_dialect)
-        elif self.WIRE_PROTOCOL_VERSION != "2.0" and magic == 253:
+        # FIXED BY GANGTI/20190110/MAVLINK CUSTOMIZATION
+        elif self.WIRE_PROTOCOL_VERSION != "2.0" and magic == 223:
+        # CLOSE BY GANGTI/20190110/MAVLINK CUSTOMIZATION
             self.WIRE_PROTOCOL_VERSION = "2.0"
             os.environ['MAVLINK20'] = '1'
             set_dialect(current_dialect)
@@ -1414,8 +1420,10 @@ class mavmmaplog(mavlogfile):
         ofs = 0
         pct = 0
 
-        MARKER_V1 = 0xFE
-        MARKER_V2 = 0xFD
+        # FIXED BY GANGTI/20190110/MAVLINK CUSTOMIZATION
+        MARKER_V1 = 0xEF
+        MARKER_V2 = 0xDF
+        # CLOSE BY GANGTI/20190110/MAVLINK CUSTOMIZATION
         
         while ofs+8+6 < self.data_len:
             marker = u_ord(self.data_map[ofs+8])

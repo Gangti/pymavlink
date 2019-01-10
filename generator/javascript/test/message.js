@@ -51,7 +51,9 @@ describe('Complete MAVLink packet', function() {
         this.mav.seq = 5;
 
         // Create a buffer that matches what the Python version of MAVLink creates
-        var reference = new Buffer([0xfe, 0x1e, 0x05, 0x2a, 0x96, 0x18, 0x15, 0xcd, 0x5b, 0x07, 0x00, 0x00, 0x00, 0x00, 0x00, 0x0c, 0xcf, 0x02, 0x40, 0xf4, 0x7b, 0x00, 0x50, 0xc3, 0x00, 0x00, 0x90, 0x19, 0xd6, 0x11, 0xd3, 0x04, 0xd2, 0x04, 0x03, 0x09, 0xee, 0x16]);
+        // FIXED BY GANGTI/20190110/MAVLINK CUSTOMIZATION
+        var reference = new Buffer([0xef, 0x1e, 0x05, 0x2a, 0x96, 0x18, 0x15, 0xcd, 0x5b, 0x07, 0x00, 0x00, 0x00, 0x00, 0x00, 0x0c, 0xcf, 0x02, 0x40, 0xf4, 0x7b, 0x00, 0x50, 0xc3, 0x00, 0x00, 0x90, 0x19, 0xd6, 0x11, 0xd3, 0x04, 0xd2, 0x04, 0x03, 0x09, 0xee, 0x16]);
+        // CLOSE BY GANGTI/20190110/MAVLINK CUSTOMIZATION
         new Buffer(gpsraw.pack(this.mav)).should.eql(reference);
 
     });
@@ -76,7 +78,9 @@ describe('Complete MAVLink packet', function() {
         this.mav.seq = 5;
         
         // Create a buffer that matches what the Python version of MAVLink creates
-        var reference = new Buffer([0xfe, 0x1e, 0x05, 0x2a, 0x96, 0x18, 0x01, 0x18, 0x3d, 0x9e, 0x59, 0x83, 0xfd, 0x0f, 0x00, 0x0c, 0xcf, 0x02, 0x40, 0xf4, 0x7b, 0x00, 0x50, 0xc3, 0x00, 0x00, 0x90, 0x19, 0xd6, 0x11, 0xd3, 0x04, 0xd2, 0x04, 0x03, 0x09, 0x6c, 0xe8]);
+        // FIXED BY GANGTI/20190110/MAVLINK CUSTOMIZATION
+        var reference = new Buffer([0xef, 0x1e, 0x05, 0x2a, 0x96, 0x18, 0x01, 0x18, 0x3d, 0x9e, 0x59, 0x83, 0xfd, 0x0f, 0x00, 0x0c, 0xcf, 0x02, 0x40, 0xf4, 0x7b, 0x00, 0x50, 0xc3, 0x00, 0x00, 0x90, 0x19, 0xd6, 0x11, 0xd3, 0x04, 0xd2, 0x04, 0x03, 0x09, 0x6c, 0xe8]);
+        // CLOSE BY GANGTI/20190110/MAVLINK CUSTOMIZATION
         new Buffer(gpsraw.pack(this.mav)).should.eql(reference);
 
     });
@@ -95,7 +99,9 @@ describe('Complete MAVLink packet', function() {
         this.mav.seq = 7;
 
         // Create a buffer that matches what the Python version of MAVLink creates
-        var reference = new Buffer([0xfe, 0x09, 0x07, 0x2a, 0x96, 0x00, 0x44, 0x00, 0x00, 0x00, 0x05, 0x03, 0x2d, 0x0d, 0x01, 0xac, 0x9d]);
+        // FIXED BY GANGTI/20190110/MAVLINK CUSTOMIZATION
+        var reference = new Buffer([0xef, 0x09, 0x07, 0x2a, 0x96, 0x00, 0x44, 0x00, 0x00, 0x00, 0x05, 0x03, 0x2d, 0x0d, 0x01, 0xac, 0x9d]);
+        // CLOSE BY GANGTI/20190110/MAVLINK CUSTOMIZATION
         new Buffer(heartbeat.pack(this.mav)).should.eql(reference);
 
     });
@@ -106,7 +112,9 @@ describe('Complete MAVLink packet', function() {
         // 1152221500606846977 = 0xffd8359 9e3d1801
 
         // Create a buffer that matches what the Python version of MAVLink creates
-        var reference = new Buffer([0xfe, 0x1e, 0x05, 0x2a, 0x96, 0x18, 0x01, 0x18, 0x3d, 0x9e, 0x59, 0x83, 0xfd, 0x0f, 0x00, 0x0c, 0xcf, 0x02, 0x40, 0xf4, 0x7b, 0x00, 0x50, 0xc3, 0x00, 0x00, 0x90, 0x19, 0xd6, 0x11, 0xd3, 0x04, 0xd2, 0x04, 0x03, 0x09, 0x6c, 0xe8]);
+        // FIXED BY GANGTI/20190110/MAVLINK CUSTOMIZATION
+        var reference = new Buffer([0xef, 0x1e, 0x05, 0x2a, 0x96, 0x18, 0x01, 0x18, 0x3d, 0x9e, 0x59, 0x83, 0xfd, 0x0f, 0x00, 0x0c, 0xcf, 0x02, 0x40, 0xf4, 0x7b, 0x00, 0x50, 0xc3, 0x00, 0x00, 0x90, 0x19, 0xd6, 0x11, 0xd3, 0x04, 0xd2, 0x04, 0x03, 0x09, 0x6c, 0xe8]);
+        // CLOSE BY GANGTI/20190110/MAVLINK CUSTOMIZATION
 
         var m = new MAVLink();
 
@@ -141,7 +149,9 @@ describe('MAVLink header', function() {
     })
 
     it('Can pack itself', function() {
-        this.h.pack().should.eql([254, 1, 2, 3, 4, 21]);
+        // FIXED BY GANGTI/20190110/MAVLINK CUSTOMIZATION
+        this.h.pack().should.eql([239, 1, 2, 3, 4, 21]);
+        // CLOSE BY GANGTI/20190110/MAVLINK CUSTOMIZATION
     });
 
 });
@@ -177,7 +187,8 @@ describe('MAVLink message', function() {
     it('Can pack itself', function() {
 
         var packed = this.heartbeat.pack(this.mav);
-        packed.should.eql([254, 9, 0, 0, 0, mavlink.MAVLINK_MSG_ID_HEARTBEAT, // that bit is the header,
+        // FIXED BY GANGTI/20190110/MAVLINK CUSTOMIZATION
+        packed.should.eql([239, 9, 0, 0, 0, mavlink.MAVLINK_MSG_ID_HEARTBEAT, // that bit is the header,
             // this is the payload, arranged in the order map specified in the protocol,
             // which differs from the constructor.
             0, 0, 0, 0, // custom bitfield -- length 4 (type=I)
@@ -189,6 +200,7 @@ describe('MAVLink message', function() {
             109, // CRC
             79 // CRC
             ]);
+        // CLOSE BY GANGTI/20190110/MAVLINK CUSTOMIZATION
 
     });
 
@@ -215,19 +227,25 @@ describe('MAVLink message', function() {
         });
 
         it('throws an error if the message has a bad prefix', function() {
-            var packed = [0, 3, 5, 7, 9, 11]; // bad data prefix in header (0, not 254)
+            // FIXED BY GANGTI/20190110/MAVLINK CUSTOMIZATION
+            var packed = [0, 3, 5, 7, 9, 11]; // bad data prefix in header (0, not 239)
+            // CLOSE BY GANGTI/20190110/MAVLINK CUSTOMIZATION
             var m = this.m;
             (function() { m.decode(packed); }).should.throw('Invalid MAVLink prefix (0)');
         });
 
         it('throws an error if the message ID is not known', function() {
-            var packed = [254, 1, 0, 3, 0, 200, 1, 0, 0]; // 200 = invalid ID
+            // FIXED BY GANGTI/20190110/MAVLINK CUSTOMIZATION
+            var packed = [239, 1, 0, 3, 0, 200, 1, 0, 0]; // 200 = invalid ID
+            // CLOSE BY GANGTI/20190110/MAVLINK CUSTOMIZATION
             var m = this.m;
             (function() { m.decode(packed); }).should.throw('Unknown MAVLink message ID (200)');
         });
 
         it('throws an error if the message length is invalid', function() {
-            var packed = [254, 3, 257, 0, 0, 0, 0, 0];
+            // FIXED BY GANGTI/20190110/MAVLINK CUSTOMIZATION
+            var packed = [239, 3, 257, 0, 0, 0, 0, 0];
+            // CLOSE BY GANGTI/20190110/MAVLINK CUSTOMIZATION
             var m = this.m;
             (function() { m.decode(packed); }).should.throw('Invalid MAVLink message length.  Got 0 expected 3, msgId=0');
         });

@@ -271,7 +271,9 @@ MAVLink = function(logger, srcSystem, srcComponent) {
 
     this.have_prefix_error = false;
 
-    this.protocol_marker = 254;
+    // FIXED BY GANGTI/20190110/MAVLINK CUSTOMIZATION
+    this.protocol_marker = 239;
+    // CLOSE BY GANGTI/20190110/MAVLINK CUSTOMIZATION
     this.little_endian = true;
 
     this.crc_extra = true;
@@ -328,7 +330,9 @@ MAVLink.prototype.pushBuffer = function(data) {
 MAVLink.prototype.parsePrefix = function() {
 
     // Test for a message prefix.
-    if( this.buf.length >= 1 && this.buf[0] != 254 ) {
+    // FIXED BY GANGTI/20190110/MAVLINK CUSTOMIZATION
+    if( this.buf.length >= 1 && this.buf[0] != 239 ) {
+    // CLOSE BY GANGTI/20190110/MAVLINK CUSTOMIZATION
 
         // Strip the offending initial byte and throw an error.
         var badPrefix = this.buf[0];
@@ -343,7 +347,9 @@ MAVLink.prototype.parsePrefix = function() {
         //}
 
     }
-    //else if( this.buf.length >= 1 && this.buf[0] == 254 ) {
+    // FIXED BY GANGTI/20190110/MAVLINK CUSTOMIZATION
+    //else if( this.buf.length >= 1 && this.buf[0] == 239 ) {
+    // CLOSE BY GANGTI/20190110/MAVLINK CUSTOMIZATION
     //    this.have_prefix_error = false;
     //}
 
@@ -466,7 +472,9 @@ MAVLink.prototype.decode = function(msgbuf) {
         throw new Error('Unable to unpack MAVLink header: ' + e.message);
     }
 
-    if (magic.charCodeAt(0) != 254) {
+    // FIXED BY GANGTI/20190110/MAVLINK CUSTOMIZATION
+    if (magic.charCodeAt(0) != 239) {
+    // CLOSE BY GANGTI/20190110/MAVLINK CUSTOMIZATION
         throw new Error("Invalid MAVLink prefix ("+magic.charCodeAt(0)+")");
     }
 

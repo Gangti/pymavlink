@@ -665,7 +665,9 @@ public class Packet {
         static let numberOfHeaderBytes = Constant.numberOfChecksumBytes + Constant.coreHeaderLength + 1
         
         /// Packet start sign. Indicates the start of a new packet. v1.0.
-        static let packetStx: UInt8 = 0xFE
+        /// FIXED BY GANGTI/20190110/MAVLINK CUSTOMIZATION
+        static let packetStx: UInt8 = 0xEF
+        /// CLOSE BY GANGTI/20190110/MAVLINK CUSTOMIZATION
     }
     
     /// Channel on which packet was received

@@ -252,7 +252,9 @@ ${importString}
 * This is the anatomy of one packet. It is inspired by the CAN and SAE AS-4 standards.
 
 * Byte Index  Content              Value       Explanation
-* 0            Packet start sign  v1.0: 0xFE   Indicates the start of a new packet.  (v0.9: 0x55)
+* FIXED BY GANGTI/20190110/MAVLINK CUSTOMIZATION
+* 0            Packet start sign  v1.0: 0xEF   Indicates the start of a new packet.  (v0.9: 0x55)
+* CLOSE BY GANGTI/20190110/MAVLINK CUSTOMIZATION
 * 1            Payload length      0 - 255     Indicates length of the following payload.
 * 2            Packet sequence     0 - 255     Each component counts up his send sequence. Allows to detect packet loss
 * 3            System ID           1 - 255     ID of the SENDING system. Allows to differentiate different MAVs on the same network.
@@ -269,7 +271,9 @@ ${importString}
 public class MAVLinkPacket implements Serializable {
     private static final long serialVersionUID = 2095947771227815314L;
 
-    public static final int MAVLINK_STX = 254;
+    /* FIXED BY GANGTI/20190110/MAVLINK CUSTOMIZATION */
+    public static final int MAVLINK_STX = 239;
+    /* CLOSE BY GANGTI/20190110/MAVLINK CUSTOMIZATION */
 
     /**
     * Message length. NOT counting STX, LENGTH, SEQ, SYSID, COMPID, MSGID, CRC1 and CRC2

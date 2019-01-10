@@ -215,10 +215,14 @@ function mavlink_proto.dissector(buffer,pinfo,tree)
     
     	while (true)
 		do
-            if (version == 0xfe) then
+            -- FIXED BY GANGTI/20190110/MAVLINK CUSTOMIZATION
+            if (version == 0xef) then
+            -- CLOSE BY GANGTI/20190110/MAVLINK CUSTOMIZATION
                 protocolString = "MAVLink 1.0"
                 break
-            elseif (version == 0xfd) then
+            -- FIXED BY GANGTI/20190110/MAVLINK CUSTOMIZATION
+            elseif (version == 0xdf) then
+            -- CLOSE BY GANGTI/20190110/MAVLINK CUSTOMIZATION
                 protocolString = "MAVLink 2.0"
                 break
             elseif (version == 0x55) then
@@ -267,7 +271,9 @@ function mavlink_proto.dissector(buffer,pinfo,tree)
         -- HEADER ----------------------------------------
     
         local msgid
-        if (version == 0xfe) then
+        -- FIXED BY GANGTI/20190110/MAVLINK CUSTOMIZATION
+        if (version == 0xef) then
+        -- CLOSE BY GANGTI/20190110/MAVLINK CUSTOMIZATION
             if (buffer:len() - 2 - offset > 6) then
                 -- normal header
                 local header = subtree:add("Header")
@@ -301,7 +307,9 @@ function mavlink_proto.dissector(buffer,pinfo,tree)
                 subtree:add(f.rawheader, buffer(offset, hsize))
                 offset = offset + hsize
             end
-        elseif (version == 0xfd) then
+        -- FIXED BY GANGTI/20190110/MAVLINK CUSTOMIZATION
+        elseif (version == 0xdf) then
+        -- CLOSE BY GANGTI/20190110/MAVLINK CUSTOMIZATION
             if (buffer:len() - 2 - offset > 10) then
                 -- normal header
                 local header = subtree:add("Header")

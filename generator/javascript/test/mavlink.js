@@ -14,10 +14,14 @@ describe("Generated MAVLink protocol handler object", function() {
         this.m = new MAVLink();
 
         // Valid heartbeat payload
-        this.heartbeatPayload = new Buffer([0xfe, 0x09, 0x03, 0xff , 0x00 , 0x00 , 0x00 , 0x00 , 0x00 , 0x00 , 0x06 , 0x08 , 0x00 , 0x00 , 0x03, 0x9f, 0x5c]);
+        // FIXED BY GANGTI/20190110/MAVLINK CUSTOMIZATION
+        this.heartbeatPayload = new Buffer([0xef, 0x09, 0x03, 0xff , 0x00 , 0x00 , 0x00 , 0x00 , 0x00 , 0x00 , 0x06 , 0x08 , 0x00 , 0x00 , 0x03, 0x9f, 0x5c]);
+        // CLOSE BY GANGTI/20190110/MAVLINK CUSTOMIZATION
 
         // Complete but invalid message
-        this.completeInvalidMessage = new Buffer([0xfe, 0x00, 0xfe, 0x00, 0x00, 0xe0, 0x00, 0x00]);
+        // FIXED BY GANGTI/20190110/MAVLINK CUSTOMIZATION
+        this.completeInvalidMessage = new Buffer([0xef, 0x00, 0xfe, 0x00, 0x00, 0xe0, 0x00, 0x00]);
+        // CLOSE BY GANGTI/20190110/MAVLINK CUSTOMIZATION
     });
 
     describe("message header handling", function() {

@@ -29,7 +29,9 @@ from construct.core import FieldError
 from argparse import ArgumentParser, FileType
 
 
-MAVLINK_MAGIC = 0xfe
+# FIXED BY GANGTI/20190110/MAVLINK CUSTOMIZATION
+MAVLINK_MAGIC = 0xef
+# CLOSE BY GANGTI/20190110/MAVLINK CUSTOMIZATION
 write_junk = True
 
 # copied from ardupilotmega.h (git changeset 694536afb882068f50da1fc296944087aa207f9f, Dec 02 2012
@@ -167,7 +169,9 @@ def convert_file(mavlink_file, pcap_file):
             data[:6]
             cnt_junk += 1
 
-        # assume, our 0xFE was the start of a packet
+        # FIXED BY GANGTI/20190110/MAVLINK CUSTOMIZATION
+        # assume, our 0xEF was the start of a packet
+        # CLOSE BY GANGTI/20190110/MAVLINK CUSTOMIZATION
         header = parse_header(data)
         payload_len = header['plength']
         pkt_length = 6 + payload_len + 2

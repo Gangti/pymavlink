@@ -4,7 +4,9 @@
 // This is normally dynamically generated as mavlink.h, but we just use the same settings for all native stacks
 
 #ifndef MAVLINK_STX
-#define MAVLINK_STX 254
+// FIXED BY GANGTI/20190110/MAVLINK CUSTOMIZATION
+#define MAVLINK_STX 239
+// CLOSE BY GANGTI/20190110/MAVLINK CUSTOMIZATION
 #endif
 
 #ifndef MAVLINK_ENDIAN
